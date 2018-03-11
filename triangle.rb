@@ -14,7 +14,16 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  # Brute force check, not the best but the fastest way to solve the task
+  if a == b && b == c && c == a
+    :equilateral
+  else
+    if (a == b) || (b == c) || (a == c)
+      :isosceles
+    else
+      :scalene
+    end
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
