@@ -14,16 +14,20 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # Brute force check, not the best but the fastest way to solve the task
-  if a == b && b == c && c == a
-    :equilateral
-  else
-    if (a == b) || (b == c) || (a == c)
-      :isosceles
-    else
-      :scalene
-    end
+  if a <= 0 || b <= 0 || c <= 0
+    raise TriangleError, "Side can not be zero or negative"
   end
+
+  sides = [a, b, c].sort
+  a, b, c = sides
+  if a + b <= c
+    raise TriangleError, "The sum of sides should not exist the length of third side"
+  end
+
+  # Brute force check, not the best but the fastest way to solve the task
+  return :equilateral if a == b && a == c
+  return :isosceles if a == b || a == c || b == c
+  :scalene
 end
 
 # Error class used in part 2.  No need to change this code.
